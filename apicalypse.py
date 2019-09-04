@@ -40,9 +40,9 @@ class apicalypse():
     def filter(self, filters):
         if filters:
             if isinstance(filters, list):
-                self.filter_array.append(f'filter {" & ".join(filters)}')
+                self.filter_array.append(f'where {" & ".join(filters)}')
             else:
-                self.filter_array.append(f'filter {filters.strip()}')
+                self.filter_array.append(f'where {filters.strip()}')
         return self
     
     def construct_options(self, url):
@@ -71,7 +71,7 @@ class apicalypse():
         return response.json()
 
 def main():
-    url = 'https://endpoint-alpha.igdb.com/games/'
+    url = 'https://api-v3.igdb.com/games/'
     igdb = apicalypse({
         'headers': {
             'Accept': 'application/json',
